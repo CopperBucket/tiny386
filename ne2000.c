@@ -414,6 +414,9 @@ static void *net_open(NE2000State *s)
 
 #elif defined(USE_SLIRP)
 #include <slirp/libslirp.h>
+#if SLIRP_CONFIG_VERSION_MAX < 5
+typedef ssize_t slirp_ssize_t;
+#endif
 #include <stdio.h>
 struct SLIRP {
     void *slirp;
